@@ -15,11 +15,14 @@
         </tr>
         <?php
         require_once "settings.php";
-        $dbconn = @mysqli_connect($host,$user,$pwd,$sql_db);
+        $dbconn = mysqli_connect($host, $user, $pwd, $sql_db);
         if ($dbconn){
+            die("Connection failed: " . mysqli_connect_error());
+            }
             $query = "SELECT * FROM cars";
             $result = mysqli_query($dbconn,$query);
             if ($result) {
+                while ($row = mysqli_fetch_assoc($result)) {
                 echo "<tr>";
                     echo "<td>" . $row["make"] . "</td>";
                     echo "<td>" . $row["model"] . "</td>";
@@ -28,7 +31,7 @@
                     echo "</tr>";
             }
         } else {
-            echo "<tr>There are no cars to display.</td>";            
+            echo "<tr>There are no cars to display.</tr>";            
         }
         mysqli_close($dbconn);
         ?>

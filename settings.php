@@ -1,6 +1,6 @@
 <?php
 $host = "localhost";
 $user = "root";
-$pswd = "";
-$dbnm = "exhibition_db";
+$pwd = "";
+$sql_db = "exhibition_db";
 ?>
